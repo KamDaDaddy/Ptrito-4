@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     //privates
     private Rigidbody playerRb;
+    private Game
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         forwardInput = Input.GetAxis("Vertical");
-        playerRb.AddForce(Vector3.forward * speed * forwardInput);
+        playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
     }
 }
