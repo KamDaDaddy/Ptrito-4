@@ -6,7 +6,7 @@ public class RotateCamera : MonoBehaviour
 {
     //publics
     public float rotationSpeed;
-    public float horizontalInput;
+    float horizontalInput;
 
     //private
 
@@ -20,7 +20,7 @@ public class RotateCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
+        float horizontalInput = Input.GetAxis("Horizontal");
         transform.Rotate(Vector3.up, horizontalInput * rotationSpeed * Time.deltaTime);
     }
 }
