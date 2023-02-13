@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+
         focalPoint = GameObject.Find("Focal Point");
     }
 
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
             hasPowerup = true;
 
             Destroy(other.gameObject);
+            
             StartCoroutine(PowerupCountdownRoutine());
         }
     }
@@ -46,15 +48,23 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy") && hasPowerup)
         {
+            Rigidbody enemyRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+            Vector3 awayFromPlayer = (collision.gameObject.transform.position - transform.position);
+
             Debug.Log("Collided with " + collision.gameObject.name + " with powerup set to " + hasPowerup);
             enemyRigidbody.AddForce(awayFromPlayer * powerupStrength, ForceMode.Impulse);
             
-            Rigidbody enemyRigidbody = collision.gameObject.GetComponent<Rigidbody>();
-            Vector3 awayFromPlayer = (collision.gameObject.transform.position - transform.position);
+            
         }
-    
-    
-    
     }
+
+    IEnumerator PowerupCountdownRoutine()
+    {
+        yield return new WaitForSeconds(7);
+        hasPowerup = false;
+    }
+
+
+
 
 }
