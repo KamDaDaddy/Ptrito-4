@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     //public
     public float speed = 15.0f;
     public bool hasPowerup;
+    public GameObject powerusIndicator;
 
     //privates
     private Rigidbody playerRb;
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
         
         //horizontalInput = Input.GetAxis("Horizontal");
         playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
+        powerusIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
 
     }
     //Powerup script
@@ -39,6 +41,7 @@ public class PlayerController : MonoBehaviour
             hasPowerup = true;
 
             Destroy(other.gameObject);
+            powerusIndicator.gameObject.SetActive(true);
             
             StartCoroutine(PowerupCountdownRoutine());
         }
@@ -62,6 +65,8 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(7);
         hasPowerup = false;
+
+        powerusIndicator.gameObject.SetActive(false);
     }
 
 

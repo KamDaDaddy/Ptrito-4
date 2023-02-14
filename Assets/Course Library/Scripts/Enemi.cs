@@ -8,6 +8,7 @@ public class Enemi : MonoBehaviour
     public float speed;
     public GameObject EnemiPrefab;
 
+
     //privates
     private Rigidbody enemiRb;
     private GameObject larri;
@@ -27,5 +28,12 @@ public class Enemi : MonoBehaviour
         Vector3 lookDirection = (larri.transform.position - transform.position).normalized;
         
         enemiRb.AddForce(lookDirection * speed);
+        if (transform.position.y < -10)
+        {
+            Destroy(gameObject);
+        }
+    
+    
+    
     }
 }
