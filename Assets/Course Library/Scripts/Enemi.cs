@@ -19,7 +19,7 @@ public class Enemi : MonoBehaviour
         enemiRb = GetComponent<Rigidbody>();
         larri = GameObject.Find("Larri");
 
-        Instantiate(EnemiPrefab, new Vector3(0, 0, 6), EnemiPrefab.transform.rotation);
+        //Instantiate(EnemiPrefab, new Vector3(0, 0, 6), EnemiPrefab.transform.rotation);
     }
 
     // Update is called once per frame

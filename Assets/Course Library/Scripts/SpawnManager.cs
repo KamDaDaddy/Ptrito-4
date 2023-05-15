@@ -7,7 +7,7 @@ public class SpawnManager : MonoBehaviour
     
     private float spawnRange = 9;
 
-    public GameObject EnemiPrefab;
+    public GameObject enemiPrefab;
     public GameObject powerupPrefab;
     public int enemiCount;
     public int waveNumber = 1;
@@ -50,7 +50,7 @@ public class SpawnManager : MonoBehaviour
     {
         for (int i = 0; i < enemiesToSpawn; i++)
         {
-            Instantiate(EnemiPrefab, GenerateSpawnPosition(), EnemiPrefab.transform.rotation);
+            Instantiate(enemiPrefab, GenerateSpawnPosition(), enemiPrefab.transform.rotation);
 
         }
 
