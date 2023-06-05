@@ -360,6 +360,7 @@
 "Assets/Course Library/Scripts/PlayerController.cs"
 "Assets/Course Library/Scripts/RotateCamera.cs"
 "Assets/Course Library/Scripts/SpawnManager.cs"
+"Assets/PowerupLit.cs"
 -langversion:9.0
 
 /deterministic
