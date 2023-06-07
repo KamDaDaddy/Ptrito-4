@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //public
+        //public
     public float speed = 15.0f;
     public bool hasPowerup;
     public GameObject powerusIndicator;
-    public GameObject isLitPrefab;
+    public PowerUpType currentPowerUp = PowerUpType.None;
     
 
-    //privates
+        //privates
     private Rigidbody playerRb;
     private GameObject focalPoint;
     private float powerupStrength = 15.0f;
+    private GameObject isLitPrefab;
+    private GameObject spawnIsLit;
+    private Coroutine powerUpDecay;
 
     Vector3 offset = new Vector3(0.15f, 0, 1.5f);
     //private horizontalInput;
@@ -48,11 +51,18 @@ public class PlayerController : MonoBehaviour
         if(other.CompareTag("Powerup"))
         {
             hasPowerup = true;
+            currentPowerUp = other.gameObject.GetComponent<Powerup>().powerUpType;
 
             Destroy(other.gameObject);
             powerusIndicator.gameObject.SetActive(true);
             
-            StartCoroutine(PowerupCountdownRoutine());
+            if(powerUpDecay != null)
+            {
+                StopCoroutine(powerUpDecay);
+            }
+
+            powerUpDecay = StartCoroutine(PowerupCountdownRoutine());
+        
         }
     }
 
